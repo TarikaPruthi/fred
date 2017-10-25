@@ -5,15 +5,15 @@ var path = require("path");
 getPlugins = function() {
 	var optionsDev = {
 		change: [{
-			file: path.join(__dirname, './public/index.html'),
+			file: path.join(__dirname, '../server/src/main/resources/templates/index.html'),
 			parameters: {'bundle\.(.+)\.js': 'bundle.js'}
 		}]		
 	}
 	var optionsBuild = {
 		change: [{
-			file: './public/index.html',
+			file: '../server/src/main/resources/templates/index.html',
 			parameters: {
-				'bundle(\..+)?\.js': 'bundle.[renderedHash:0].js'
+				'bundle(\..+)?\.js': 'bundle.js'
 			},
 			// delete all but most recent bundle
 			before: function(stats, change) {
@@ -39,7 +39,7 @@ module.exports = {
 	entry: './src/index.cjsx',
 	plugins: getPlugins(),
 	output: {
-		filename: (process.env.WEBPACK_ENV === 'build' ? './public/bundle.[chunkhash].js' : 'bundle.js')
+		filename: (process.env.WEBPACK_ENV === 'build' ? '../server/src/main/resources/static/js/bundle.js' : 'bundle.js')
 	},
 	module: {
 		loaders: [
