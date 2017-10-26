@@ -5,13 +5,13 @@ var path = require("path");
 getPlugins = function() {
 	var optionsDev = {
 		change: [{
-			file: path.join(__dirname, '../server/src/main/resources/templates/index.html'),
+			file: path.join(__dirname, '../server/src/main/resources/WEB-INF/templates/index.html'),
 			parameters: {'bundle\.(.+)\.js': 'bundle.js'}
 		}]		
 	}
 	var optionsBuild = {
 		change: [{
-			file: '../server/src/main/resources/templates/index.html',
+			file: '../server/src/main/resources/WEB-INF/templates/index.html',
 			parameters: {
 				'bundle(\..+)?\.js': 'bundle.js'
 			},
@@ -39,7 +39,7 @@ module.exports = {
 	entry: './src/index.cjsx',
 	plugins: getPlugins(),
 	output: {
-		filename: (process.env.WEBPACK_ENV === 'build' ? '../server/src/main/resources/static/js/bundle.js' : 'bundle.js')
+		filename: (process.env.WEBPACK_ENV === 'build' ? '../server/src/main/resources/js/bundle.js' : 'bundle.js')
 	},
 	module: {
 		loaders: [
