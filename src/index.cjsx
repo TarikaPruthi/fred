@@ -43,7 +43,7 @@ class RootComponent extends React.Component
 				if State.get().resource
 					"If you leave this page you will lose any unsaved changes."
 
-		defaultProfilePath = "../profiles/dstu3.json"
+		defaultProfilePath = "../profiles/stu3.json"
 
 		State.trigger "load_initial_json", 
 			qs.profiles || defaultProfilePath,
