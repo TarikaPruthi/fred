@@ -83,6 +83,8 @@
                         </goals>
                         <configuration>
                             <outputDirectory>../server/src/main/resources/FHIRForms</outputDirectory>
+                            <encoding>UTF-8</encoding>
+                            <overwrite>true</overwrite>
                             <resources>
                                 <resource>
                                     <directory>../FHIRForms</directory>
