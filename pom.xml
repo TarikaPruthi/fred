@@ -77,13 +77,12 @@
                     <execution>
                         <id>copy-resources</id>
                         <!-- here the phase you need -->
-                        <phase>validate</phase>
+                        <phase>package</phase>
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
                             <outputDirectory>../server/src/main/resources/FHIRForms</outputDirectory>
-                            <encoding>UTF-8</encoding>
                             <overwrite>true</overwrite>
                             <resources>
                                 <resource>
@@ -92,6 +91,27 @@
                                 </resource>
                             </resources>
                         </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>com.kishlaly.utils.maven</groupId>
+                <artifactId>bom-remover</artifactId>
+                <version>1.0</version>
+                <configuration>
+                    <folder>../FHIRForms</folder>
+                    <masks>
+                        <mask>*.json</mask>
+                    </masks>
+                    <recursively>yes</recursively>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>work</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
@@ -106,4 +126,11 @@
         </resources>
 
     </build>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>kishlaly</id>
+            <url>http://maven.kishlaly.com</url>
+            <layout>default</layout>
+        </pluginRepository>
+    </pluginRepositories>
 </project>
