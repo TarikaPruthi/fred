@@ -64,7 +64,7 @@
                         <configuration>
                             <tasks>
                                 <echo>Copy bundle.js</echo>
-                                <copy file="bundle.js" tofile="../server/src/main/resources/js/bundle.js"/>
+                                <copy file="bundle.js" tofile="../fhirql/src/main/resources/js/bundle.js"/>
                             </tasks>
                         </configuration>
                     </execution>
@@ -82,7 +82,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>../server/src/main/resources/FHIRForms</outputDirectory>
+                            <outputDirectory>../fhirql/src/main/resources/FHIRForms</outputDirectory>
                             <overwrite>true</overwrite>
                             <resources>
                                 <resource>
