@@ -28,6 +28,23 @@ class ExportDialog extends React.Component
 		blob = new Blob [jsonString], {type: "text/plain;charset=utf-8"}
 		saveAs blob, fileName
 
+	handleUpdate: (e) ->
+		e.preventDefault()
+		resid = $('#resource_id').val()
+		posturl = '/fhir/fhir/' + $('#resource_type').val() + '/' + resid
+		#postdata = JSON.stringify( { "resource-create-body": jsonString, "resource-create-id": resid } )
+		{jsonString, resourceType} = @buildJson()
+		$.ajax posturl,
+
+            type: 'PUT'
+            #dataType: 'json'
+            contentType: 'application/json+fhir'
+            data: jsonString
+            error: (jqXHR, textStatus, errorThrown) ->
+        	    $('body').append "AJAX Error: #{textStatus}"
+            success: (data, textStatus, jqXHR) ->
+        	    $('body').append "Successful AJAX call: #{data}"
+
 	#help the user with a select all if they hit the
 	#control key with nothing selected
 	handleKeyDown: (e) ->
@@ -64,12 +81,20 @@ class ExportDialog extends React.Component
 					className="form-control"
 					style={height:"300px"}
 					value={jsonString}
-				/>
+				/><br/>
+				<input id="resource_id" type="text"/>
+				<select id="resource_type">
+				<option value="Questionnaire">Questionnaire</option>
+				<option value="DataElement">DataElement</option>
+				</select>
 				<p className="small">*Press Ctrl+C / Command+C to copy json text to system clipboard</p>
 			</Modal.Body>
 			<Modal.Footer>
 				<button className="btn btn-default" onClick={@handleDownload.bind(@)}>
 					Download
+				</button>
+				<button className="btn btn-default" onClick={@handleUpdate.bind(@)}>
+					Update
 				</button>
 			</Modal.Footer>
 		</Modal>
