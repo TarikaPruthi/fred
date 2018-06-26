@@ -48,7 +48,7 @@ class Navbar extends React.Component
 		>
 			<BsNavbar.Header>
 				<div className="pull-left" style={margin: "10px"}>
-					<img src="./img/smart-bug.png" />
+					<img src="../img/smart-bug.png" />
 				</div>
 				<BsNavbar.Brand>
 					SMART FRED v{@props.appVersion}

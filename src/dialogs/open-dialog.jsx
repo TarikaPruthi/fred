@@ -372,7 +372,7 @@ class OpenDialog extends React.Component {
     renderSpinner() {
         return (
             <div className="spinner">
-                <img src="./img/ajax-loader.gif"/>
+                <img src="../img/ajax-loader.gif"/>
             </div>
         );
     }

@@ -62,7 +62,7 @@ class RootComponent extends React.Component
 			bundleBar = <BundleBar bundle={state.bundle} />
 		
 		resourceContent = if state.ui.status is "loading"
-			<div className="spinner"><img src="./img/ajax-loader.gif" /></div>
+			<div className="spinner"><img src="../img/ajax-loader.gif" /></div>
 		else if state.resource
 			<DomainResource node={state.resource} />
 		else if !state.bundle and state.ui.status.indexOf("error") is -1
