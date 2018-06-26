@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "webpack-dev-server --config --devtool eval --progress --colors --inline --content-base ./public",
     "build-profiles": "./node_modules/.bin/coffee ./scripts/simplify-profiles.coffee",
-    "build": "WEBPACK_ENV=build ./node_modules/.bin/webpack",
+    "build": "webpack --env build ./node_modules/.bin/webpack",
     "test": "./node_modules/.bin/mocha",
     "test-watch": "./node_modules/.bin/mocha -w",
     "deploy-gh": "git subtree push --prefix public origin gh-pages",

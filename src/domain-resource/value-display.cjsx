@@ -36,7 +36,7 @@ class ValueDisplay extends React.Component
 
 	formatString: (value) ->
 		#truncate very long values
-		value.substr(0, 400)
+		value.toString().substr(0, 400)
 
 	formatBoolean: (value) ->
 		if value is true or value is "true"
