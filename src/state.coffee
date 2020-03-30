@@ -1,9 +1,9 @@
-Freezer = require "freezer-js"
+import Freezer from 'freezer-js'
 
-state = new Freezer
+State = new Freezer
 	ui: 
 		status: "ready"
 	resource: null
 	profiles: null
 
-module.exports = state
+export default State

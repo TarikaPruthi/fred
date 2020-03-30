@@ -1,8 +1,8 @@
-React    = require "react"
-ReactDOM = require "react-dom"
+import React from "react"
+import ReactDOM from "react-dom"
 
-State = require "../state"
-validator = require "../helpers/primitive-validator"
+import State from "../state"
+import PrimitiveValidator from "../helpers/primitive-validator"
 
 class ValueEditor extends React.Component
 
@@ -63,7 +63,7 @@ class ValueEditor extends React.Component
 				e.target.value = newValue
  
 	isValid: (fhirType, value) ->
-		validator.isValid(fhirType, value)
+		PrimitiveValidator(fhirType, value)
 
 	renderString: (value) ->
 		inputField = @buildTextInput (value||"").toString() 
@@ -196,9 +196,4 @@ class ValueEditor extends React.Component
 		value = @props.node.value
 		renderer.call(@, value)
 
-module.exports = ValueEditor
-
-
-
-
-
+export default ValueEditor

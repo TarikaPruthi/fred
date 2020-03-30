@@ -36,21 +36,44 @@ getPlugins = function() {
 };
 
 module.exports = {
-	entry: './src/index.cjsx',
+	entry: './src/index.coffee',
 	plugins: getPlugins(),
 	output: {
 		filename: (process.env.WEBPACK_ENV === 'build' ? '../fhirql/src/main/resources/js/bundle.js' : 'bundle.js')
 	},
+	mode: 'development',
 	module: {
-		loaders: [
-			{test: /\.jsx$/, loader: "jsx-loader?insertPragma=React.DOM"},
-			{test: /\.cjsx$/, loaders: ["coffee", "cjsx"]},
-			{test: /\.coffee$/, loader: "coffee"},
-			{test: /\.json$/, loader: "json"}
+		rules: [
+			{
+				test: /\.jsx$/,
+				loader: 'babel-loader',
+        		exclude: /node_modules/,
+        		query: {
+          			presets: ['@babel/react', '@babel/env']
+        		}
+			},
+			{
+				test: /\.cjsx$/,
+				loader: "coffee-loader",
+				options: {
+					transpile: {
+						presets: ["@babel/preset-react"]
+					}
+				}
+			},
+			{
+				test: /\.coffee$/,
+				loader: "coffee-loader",
+				options: {
+					transpile: {
+						presets: ["@babel/preset-react"]
+					}
+				}
+			}
 		]
 	},
 	resolve: {
-		extensions: ["", ".jsx", ".cjsx", ".coffee", ".js"],
-		modulesDirectories: ["js", "node_modules"]
+		extensions: [".jsx", ".cjsx", ".coffee", ".js"],
+		modules: ["js", "node_modules"]
 	}
 };

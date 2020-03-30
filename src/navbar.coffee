@@ -1,9 +1,8 @@
-React = require "react"
-State = require "./state"
-BsNavbar = require("react-bootstrap").Navbar
-{Nav, NavItem} = require("react-bootstrap")
+import React from 'react'
+import State from './state'
+import {Navbar, Nav, NavItem} from 'react-bootstrap'
 
-class Navbar extends React.Component
+class NavbarFred extends React.Component
 
 	handleUiChange: (status, e) ->
 		e.preventDefault()
@@ -40,24 +39,22 @@ class Navbar extends React.Component
 		return navItems
 
 	render: ->
-		<BsNavbar fixedTop={true} className="navbar-custom"
+		<Navbar fixedTop={true} className="navbar-custom"
 			onDragEnter={@handleDrag.bind(@)}
 			onDragOver={@handleDrag.bind(@)}
 			onDrop={@handleDrag.bind(@)}
 			onDragLeave={@handleDrag.bind(@)}
 		>
-			<BsNavbar.Header>
-				<div className="pull-left" style={margin: "10px"}>
-					<img src="../img/smart-bug.png" />
-				</div>
-				<BsNavbar.Brand>
-					SMART FRED v{@props.appVersion}
-				</BsNavbar.Brand>
-				<BsNavbar.Toggle />
-			</BsNavbar.Header>
-			<BsNavbar.Collapse><Nav>
+			<div className="pull-left" style={margin: "10px"}>
+				<img src="../img/smart-bug.png" />
+			</div>
+			<Navbar.Brand>
+				SMART FRED v{@props.appVersion}
+			</Navbar.Brand>
+			<Navbar.Toggle />
+			<Navbar.Collapse><Nav>
 				{@renderButtons()}
-			</Nav></BsNavbar.Collapse>
-		</BsNavbar>
+			</Nav></Navbar.Collapse>
+		</Navbar>
 
-module.exports = Navbar
+export default NavbarFred;

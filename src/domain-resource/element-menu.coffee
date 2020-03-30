@@ -1,6 +1,6 @@
-React = require "react"
-State = require "../state"
-{Dropdown, MenuItem} = require("react-bootstrap")
+import React from "react"
+import State from "../state"
+import {Dropdown} from "react-bootstrap"
 
 class ElementMenu extends React.Component
 
@@ -45,34 +45,34 @@ class ElementMenu extends React.Component
 			className = "heading-menu-toggle"
 			title = @props.parent.displayName
 
-		<Dropdown.Toggle className={className} bsSize="small" title={title || "Add Element"}/>
+		<Dropdown.Toggle className={className} bsSize="small" title={title || "Add Element"}>{title || "Add Element"}</Dropdown.Toggle>
 
 	renderPlaceholder: ->
-		<Dropdown.Menu><MenuItem>Loading...</MenuItem></Dropdown.Menu>
+		<Dropdown.Menu><Dropdown.Item>Loading...</Dropdown.Item></Dropdown.Menu>
 
 	renderMenu: ->
 		unless @props.node?.ui?.status is "menu"
 			return @renderPlaceholder() 
 
 		addObject = if @props.node.nodeType is "objectArray"
-			<MenuItem onSelect={@handleAddObject.bind(@)}>Add {@props.node.displayName}</MenuItem>
+			<Dropdown.Item onSelect={@handleAddObject.bind(@)}>Add {@props.node.displayName}</Dropdown.Item>
 		moveUp = if @props.node.ui.menu.canMoveUp
-			<MenuItem onSelect={@handleMove.bind(@, false)}>Move Up</MenuItem>
+			<Dropdown.Item onSelect={@handleMove.bind(@, false)}>Move Up</Dropdown.Item>
 		moveDown = if @props.node.ui.menu.canMoveDown
-			<MenuItem onSelect={@handleMove.bind(@, true)}>Move Down</MenuItem>
+			<Dropdown.Item onSelect={@handleMove.bind(@, true)}>Move Down</Dropdown.Item>
 		unusedElements = for unused, i in @props.node.ui.menu.unusedElements || []
 			required = if unused.isRequired then "*" else ""
-			<MenuItem key={i} onSelect={@handleAddItem.bind(@, unused)}>
+			<Dropdown.Item key={i} onSelect={@handleAddItem.bind(@, unused)}>
 				{unused.displayName + (required || "")}
-			</MenuItem>
+			</Dropdown.Item>
 		remove = if @props.parent
-			<MenuItem onSelect={@handleDeleteItem.bind(@)}>Remove</MenuItem>
+			<Dropdown.Item onSelect={@handleDeleteItem.bind(@)}>Remove</Dropdown.Item>
 		spacer1 = if (addObject or remove)
-			<MenuItem divider />
+			<Dropdown.Item divider />
 		spacer2 = if (moveUp or moveDown) and unusedElements?.length > 0
-			<MenuItem divider />
+			<Dropdown.Item divider />
 		header = if unusedElements?.length > 0 and @props.parent
-			<MenuItem header>Add Item</MenuItem>
+			<Dropdown.Item header>Add Item</Dropdown.Item>
 
 		#handle empty contained resources
 		if @props.node?.fhirType is "Resource"
@@ -84,4 +84,4 @@ class ElementMenu extends React.Component
 			{spacer2}{header}{unusedElements}
 		</Dropdown.Menu>
 
-module.exports = ElementMenu
+export default ElementMenu

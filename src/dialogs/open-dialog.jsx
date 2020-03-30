@@ -6,14 +6,10 @@
  * DS207: Consider shorter variations of null checks
  * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
  */
-const React = require("react");
-const ReactDOM = require("react-dom");
-const {Modal} = require("react-bootstrap");
-const bsInput = require("react-bootstrap").Input;
-const {Tabs, Tab} = require("react-bootstrap");
+import React from "react";
+import {Modal, Tabs, Tab} from "react-bootstrap";
 
-const State = require("../state");
-const SchemaUtils = require("../helpers/schema-utils");
+import State from "../state";
 
 class OpenDialog extends React.Component {
     constructor(props) {
@@ -176,6 +172,7 @@ class OpenDialog extends React.Component {
                 onDragOver={this.handleDrag.bind(this, "over")}
                 onDragEnter={this.handleDrag.bind(this, "enter")}
                 onDragLeave={this.handleDrag.bind(this, "leave")}
+                animation="false"
             >
                 <div
                     className="col-xs-10 col-xs-offset-1"
@@ -349,20 +346,20 @@ class OpenDialog extends React.Component {
         return (
             <Tabs
                 activeKey={this.state.tab}
-                animation={false}
                 onSelect={this.handleTabChange.bind(this)}
                 onKeyDown={this.handleKeyDown.bind(this)}
+                animation="false"
             >
-                <Tab eventKey="fhirFile" title="Local File">
+                <Tab eventKey="fhirFile" title="Local File" style={{opacity:1}}>
                     {this.renderFileInput()}
                 </Tab>
-                <Tab eventKey="fhirText" title="Paste JSON">
+                <Tab eventKey="fhirText" title="Paste JSON" style={{opacity:1}}>
                     {this.renderTextInput()}
                 </Tab>
-                <Tab eventKey="fhirUrl" title="Website URL">
+                <Tab eventKey="fhirUrl" title="Website URL" style={{opacity:1}}>
                     {this.renderUrlInput()}
                 </Tab>
-                <Tab eventKey="fhirNew" title="Blank Resource">
+                <Tab eventKey="fhirNew" title="Blank Resource" style={{opacity:1}}>
                     {this.renderNewInput()}
                 </Tab>
             </Tabs>
@@ -393,7 +390,7 @@ class OpenDialog extends React.Component {
             : this.renderTabs();
 
         return (
-            <Modal show={true} onHide={this.handleClose.bind(this)}>
+            <Modal show={true} onHide={this.handleClose.bind(this)} animation={false}>
                 <Modal.Header closeButton={true}>
                     <Modal.Title>{title}</Modal.Title>
                 </Modal.Header>
@@ -403,7 +400,7 @@ class OpenDialog extends React.Component {
     }
 }
 
-module.exports = OpenDialog;
+export default OpenDialog;
 
 function __guard__(value, transform) {
     return typeof value !== "undefined" && value !== null

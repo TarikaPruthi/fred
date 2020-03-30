@@ -1,16 +1,16 @@
-React = require "react"
-State = require "./state"
-SchemaUtils = require "./helpers/schema-utils"
-BsNavbar = require("react-bootstrap").Navbar
-{Nav, NavItem} = require("react-bootstrap")
+import React from 'react'
+import State from './state'
+import * as SchemaUtils from './helpers/schema-utils'
+import {Navbar, Nav, NavItem} from 'react-bootstrap'
 
 class RemoteNavbar extends React.Component
 
 	constructor: ->
+		super()
 		@notifiedReady = false
 
 	componentWillMount: ->
-		@launcher = 
+		@launcher =
 			(window.parent unless window.parent is window) or window.opener
 			
 		window.addEventListener "message", (e) =>
@@ -77,19 +77,19 @@ class RemoteNavbar extends React.Component
 		</Nav>
 
 	render: ->
-		<BsNavbar fixedTop={true} className="navbar-custom">
-			<BsNavbar.Header>
+		<Navbar fixedTop={true} className="navbar-custom">
+			<Navbar.Header>
 				<div className="pull-left" style={margin: "10px"}>
 					<img src="../img/smart-bug.png" />
 				</div>
-				<BsNavbar.Brand>
+				<Navbar.Brand>
 					SMART FRED v{@props.appVersion}
-				</BsNavbar.Brand>
-				<BsNavbar.Toggle />
-			</BsNavbar.Header>
-			<BsNavbar.Collapse>
+				</Navbar.Brand>
+				<Navbar.Toggle />
+			</Navbar.Header>
+			<Navbar.Collapse>
 				{@renderButtons()}
-			</BsNavbar.Collapse>
-		</BsNavbar>
+			</Navbar.Collapse>
+		</Navbar>
 
-module.exports = RemoteNavbar
+export default RemoteNavbar

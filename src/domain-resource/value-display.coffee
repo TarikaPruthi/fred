@@ -1,7 +1,7 @@
-React = require "react"
-moment = require "moment"
-sanitize = require "sanitize-caja"
-State = require "../state"
+import React from "react"
+import Moment from "moment"
+import Sanitize from "sanitize-caja"
+import State from "../state"
 
 class ValueDisplay extends React.Component
 
@@ -12,17 +12,17 @@ class ValueDisplay extends React.Component
 		nextProps.node isnt @props.node
 
 	formatInstant: (value) ->
-		moment(value).parseZone(value).format("YYYY-MM-DD h:m:ss A ([GMT]Z)")
+		Moment(value).parseZone(value).format("YYYY-MM-DD h:m:ss A ([GMT]Z)")
 
 	formatTime: (value) ->
-		moment(value, "HH:mm:ss.SSSS").format("h:m:ss A")
+		Moment(value, "HH:mm:ss.SSSS").format("h:m:ss A")
 
 	formatDate: (value) ->
 		dashCount = value.match(/\-/g)?.length
 		if dashCount is 1
-			moment(value, "YYYY-MM").format("MMM YYYY")
+			Moment(value, "YYYY-MM").format("MMM YYYY")
 		else if dashCount is 2
-			moment(value, "YYYY-MM-DD").format("MMM Do, YYYY")
+			Moment(value, "YYYY-MM-DD").format("MMM Do, YYYY")
 		else
 			value
 
@@ -64,7 +64,7 @@ class ValueDisplay extends React.Component
 
 	formatXhtml: (value) ->
 		<div>
-			<div className="fhir-xhtml" dangerouslySetInnerHTML={{__html: sanitize(value)}} />
+			<div className="fhir-xhtml" dangerouslySetInnerHTML={{__html: Sanitize(value)}} />
 			<div className="small text-right" onClick={@handleXhtmlPopup.bind(@)}><a href="#">view in new window</a></div>
 		</div>
 
@@ -121,4 +121,4 @@ class ValueDisplay extends React.Component
 
 		<span className="fhir-element-value">{displayValue}</span>
 
-module.exports = ValueDisplay
+export default ValueDisplay

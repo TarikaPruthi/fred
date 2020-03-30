@@ -24,7 +24,7 @@ describe "bundle utils: resource management", ->
 
 describe "bundle utils: bundle parsing", ->
 	beforeEach ->
- 		@bundle =
+		return @bundle =
 			resourceType: "Bundle"
 			type: "batch"
 			entry:[

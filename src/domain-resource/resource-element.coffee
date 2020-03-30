@@ -1,14 +1,14 @@
-React    = require "react"
-ReactDOM = require "react-dom"
+import React from "react"
+import ReactDOM from "react-dom"
 
-State = require "../state"
-validator = require "../helpers/primitive-validator"
+import State from "../state"
+import PrimitiveValidator from "../helpers/primitive-validator"
 
-ValueEditor = require "./value-editor"
-ValueDisplay = require "./value-display"
-ValueNode = require "./value-node"
-ValueArrayNode = require "./value-array-node"
-ElementMenu = require "./element-menu"
+import ValueEditor from "./value-editor"
+import ValueDisplay from "./value-display"
+import ValueNode from "./value-node"
+import ValueArrayNode from "./value-array-node"
+import ElementMenu from "./element-menu"
 
 class ResourceElement extends React.Component
 
@@ -18,7 +18,7 @@ class ResourceElement extends React.Component
 		#this is hacky - need to find a better place for pre-commit validation
 		for editNode in node.children || [node]
 			return false if node.ui?.validationErr
-			if message = validator.isValid(editNode.fhirType, editNode.value, true)
+			if message = PrimitiveValidator(editNode.fhirType, editNode.value, true)
 				State.trigger("value_change", editNode, editNode.value, message)
 				return false
 
@@ -147,4 +147,4 @@ class ResourceElement extends React.Component
 
 
 
-module.exports = ResourceElement
+export default ResourceElement

@@ -1,6 +1,6 @@
-React = require "react"
-ValueDisplay = require "./value-display"
-ValueEditor = require "./value-editor"
+import React from "react"
+import ValueDisplay from "./value-display"
+import ValueEditor from "./value-editor"
 
 class ValueNode extends React.Component
 
@@ -95,4 +95,4 @@ class ValueNode extends React.Component
 		else
 			@renderDisplay()
 
-module.exports = ValueNode
+export default ValueNode

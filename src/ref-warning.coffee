@@ -1,5 +1,5 @@
-React = require "react"
-State = require "./state"
+import React from 'react'
+import State from  './state'
 
 class RefWarning extends React.Component
 
@@ -29,4 +29,4 @@ class RefWarning extends React.Component
 		</div>
 
 
-module.exports = RefWarning
+export default RefWarning

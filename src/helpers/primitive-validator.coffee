@@ -24,8 +24,10 @@ validateFormat = (fhirType, value) ->
 	validator = validators[fhirType] || validators["string"]
 	return validator[1] unless validator[0].test value
 
-module.exports.isValid = (fhirType, value, failBlank) ->
+export default PrimitiveValidator = (fhirType, value, failBlank) ->
 	if badFormat = validateFormat(fhirType, value)
 		badFormat
 	else if failBlank
 		validatePopulated(value)
+
+#export default PrimitiveValidator

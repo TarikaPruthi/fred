@@ -1,7 +1,7 @@
-React = require "react"
-State = require "../state"
-ValueDisplay = require "./value-display"
-ValueEditor = require "./value-editor"
+import React from "react"
+import State from "../state"
+import ValueDisplay from "./value-display"
+import ValueEditor from "./value-editor"
 
 class ValueArrayNode extends React.Component
 
@@ -95,4 +95,4 @@ class ValueArrayNode extends React.Component
 
 
 
-module.exports = ValueArrayNode
+export default ValueArrayNode

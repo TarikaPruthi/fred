@@ -1,6 +1,6 @@
-React = require "react"
-State = require "./state"
-{DropdownButton, MenuItem} = require("react-bootstrap")
+import React from 'react'
+import State from './state'
+import {DropdownButton, Dropdown} from 'react-bootstrap'
 
 class BundleBar extends React.Component
 
@@ -46,9 +46,9 @@ class BundleBar extends React.Component
 					style={marginRight: "10px", marginLeft: "10px"}
 					onSelect={@handleMenu.bind(@)}
 				>
-					<MenuItem eventKey="remove_from_bundle" disabled={count is 1}>Remove from Bundle</MenuItem>
-					<MenuItem eventKey="show_open_insert">Insert Resource</MenuItem>
-					<MenuItem eventKey="clone_resource">Duplicate Resource</MenuItem>
+					<Dropdown.Item eventKey="remove_from_bundle" disabled={count is 1}>Remove from Bundle</Dropdown.Item>
+					<Dropdown.Item eventKey="show_open_insert">Insert Resource</Dropdown.Item>
+					<Dropdown.Item eventKey="clone_resource">Duplicate Resource</Dropdown.Item>
 				</DropdownButton>
 
 				<button className="btn btn-default btn-sm" 
@@ -75,4 +75,4 @@ class BundleBar extends React.Component
 		else
 			@renderEmptyBundle()
 
-module.exports = BundleBar
+export default BundleBar

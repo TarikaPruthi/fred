@@ -1,7 +1,7 @@
-React = require "react"
-State = require "../state"
-ResourceElement = require "./resource-element"
-ElementMenu = require "./element-menu"
+import React from "react"
+import State from "../state"
+import ResourceElement from "./resource-element"
+import ElementMenu from "./element-menu"
 
 class DomainResource extends React.Component
 
@@ -38,4 +38,4 @@ class DomainResource extends React.Component
 		</div>
 
 
-module.exports = DomainResource 
+export default DomainResource

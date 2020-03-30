@@ -1,6 +1,6 @@
-State = require "./state"
-SchemaUtils = require "./helpers/schema-utils"
-BundleUtils = require "./helpers/bundle-utils"
+import State from './state'
+import * as SchemaUtils from './helpers/schema-utils'
+import * as BundleUtils from './helpers/bundle-utils'
 
 canMoveNode = (node, parent) ->
 	unless parent?.nodeType in ["objectArray", "valueArray"]
@@ -63,7 +63,7 @@ State.on "load_initial_json", (profilePath, resourcePath, isRemote) ->
 		loadNext()
 
 	onLoadError = (xhr, status) ->
-		State.trigger "set_ui", current[2]	
+		State.trigger "set_ui", current[2]
 
 	loadNext()
 
@@ -357,19 +357,4 @@ State.on "add_object_element", (node, fhirElement) ->
 	node.children.splice(position, 0, newNode)
 
 
-module.exports = State
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default State

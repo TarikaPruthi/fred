@@ -1,28 +1,28 @@
-React    = require "react"
-ReactDOM = require "react-dom"
-State = require "./reactions"
-SchemaUtils = require "./helpers/schema-utils"
+import React from "react"
+import ReactDOM from "react-dom"
+import State from "./reactions"
+import * as SchemaUtils from "./helpers/schema-utils"
 
-Navbar = require "./navbar"
-RemoteNavbar = require "./remote-navbar"
-BundleBar = require "./bundle-bar"
-RefWarning = require "./ref-warning"
-Footer = require "./footer"
+import NavbarFred from "./navbar"
+import RemoteNavbar from "./remote-navbar"
+import BundleBar from "./bundle-bar"
+import RefWarning from "./ref-warning"
+import Footer from "./footer"
 
-DomainResource = require "./domain-resource/"
+import DomainResource from "./domain-resource/"
 
-OpenDialog = require "./dialogs/open-dialog"
-ExportDialog = require "./dialogs/export-dialog"
+import OpenDialog from "./dialogs/open-dialog"
+import ExportDialog from "./dialogs/export-dialog"
 
-AppInfo = require "../package.json"
+import AppInfo from "../package.json"
 
 class RootComponent extends React.Component
 	
 	constructor: ->
+		super()
 		versionSegments = AppInfo.version.split(".")
 		#only take the major and minor
 		@appVersion = versionSegments.slice(0,versionSegments.length-1).join(".")
-		super
 
 	getQs: ->
 		data = {}
@@ -43,9 +43,9 @@ class RootComponent extends React.Component
 				if State.get().resource
 					"If you leave this page you will lose any unsaved changes."
 
-		defaultProfilePath = "/fhir/profiles/stu3.json"
+		defaultProfilePath = "profiles/r4.json"
 
-		State.trigger "load_initial_json", 
+		State.trigger "load_initial_json",
 			qs.profiles || defaultProfilePath,
 			qs.resource, @isRemote
 
@@ -79,23 +79,22 @@ class RootComponent extends React.Component
 		else if state.ui.status is "validation_error"
 			<div className="alert alert-danger">Please fix errors in resource before continuing.</div>
 
-		actionWarning = if state.ui.status is "ref_warning"
-			<RefWarning count={state.ui.count}, update={state.ui.update} />
+                #actionWarning = if state.ui.status is "ref_warning"
+                #	<RefWarning count={state.ui.count}, update={state.ui.update} />
 
 		navBar = if @isRemote
-			<RemoteNavbar 
+			<RemoteNavbar
 				hasResource={if state.resource then true}
 				appVersion={@appVersion} 
 				hasProfiles={state.profiles isnt null}
 			/>
 		else
-			<Navbar hasResource={if state.resource then true} appVersion={@appVersion} />
+			<NavbarFred hasResource={if state.resource then true} appVersion={@appVersion} />
 
 		<div>
 			{navBar}
 			<div className="container" style={marginTop: "50px", marginBottom: "50px"}>
 				{bundleBar}
-				{actionWarning}
 				{error}
 				{resourceContent}
 				<Footer />
