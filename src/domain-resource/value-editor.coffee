@@ -147,7 +147,7 @@ class ValueEditor extends React.Component
 			className={commitButtonClassName} 
 			onClick={@props.onEditCommit}
 		>
-			<span className="glyphicon glyphicon-ok"></span>
+			<span className="fas fa-check"></span>
 		</button>
 
 	buildDeleteButton: (disabled) ->
@@ -156,7 +156,7 @@ class ValueEditor extends React.Component
 			onClick={@props.onNodeDelete}
 			disabled={disabled}
 		>
-			<span className="glyphicon glyphicon-trash"></span>
+			<span className="fas fa-trash-alt"></span>
 		</button>
 
 	wrapEditControls: (inputField, disableDelete) ->

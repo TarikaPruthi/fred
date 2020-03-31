@@ -45,7 +45,7 @@ class ElementMenu extends React.Component
 			className = "heading-menu-toggle"
 			title = @props.parent.displayName
 
-		<Dropdown.Toggle className={className} bsSize="small" title={title || "Add Element"}>{title || "Add Element"}</Dropdown.Toggle>
+		<Dropdown.Toggle variant="outline-dark" className={className} bsSize="small" title={title || "Add Element"}>{title || "Add Element"}</Dropdown.Toggle>
 
 	renderPlaceholder: ->
 		<Dropdown.Menu><Dropdown.Item>Loading...</Dropdown.Item></Dropdown.Menu>

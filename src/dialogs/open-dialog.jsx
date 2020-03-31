@@ -7,7 +7,7 @@
  * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
  */
 import React from "react";
-import {Modal, Tabs, Tab} from "react-bootstrap";
+import {Container, Row, Col, Modal, Tabs, Tab, Button} from "react-bootstrap";
 
 import State from "../state";
 
@@ -166,49 +166,38 @@ class OpenDialog extends React.Component {
     renderFileInput() {
         const dragClass = this.state.drag ? " dropzone" : "";
         return (
-            <div
-                className={`row${dragClass}`}
+            <Container
+                className={dragClass}
                 onDrop={this.handleDrag.bind(this, "drop")}
                 onDragOver={this.handleDrag.bind(this, "over")}
                 onDragEnter={this.handleDrag.bind(this, "enter")}
                 onDragLeave={this.handleDrag.bind(this, "leave")}
                 animation="false"
             >
-                <div
-                    className="col-xs-10 col-xs-offset-1"
-                    style={{marginTop: "20px"}}
-                >
-                    <p className="text-center">
+                <Row className="justify-content-md-center" style={{marginTop: "20px"}}>
+                    <Col md="auto">
                         Choose (or drag and drop) a local JSON FHIR Resource or Bundle
-                    </p>
-                </div>
-                <div
-                    className="col-xs-4 col-xs-offset-4"
-                    style={{marginTop: "20px", marginBottom: "10px"}}
-                >
-                    <button
-                        className="btn btn-primary btn-block"
-                        onClick={this.handleSelectFile.bind(this)}
-                        ref="fhirFile"
-                    >{`\
-\t\t\t\t\tSelect File\
-`}</button>
-                </div>
-                <input
-                    type="file"
-                    style={{display: "none"}}
-                    ref="fileReaderInput"
-                    onChange={this.handleFileSelected.bind(this)}
-                    accept=".json"
-                />
-            </div>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <Button
+                            style={{marginTop: "20px"}}
+                            className="btn btn-primary btn-block"
+                            onClick={this.handleSelectFile.bind(this)}
+                            ref="fhirFile"
+                        >{`\t\t\t\t\tSelect File`}
+                        </Button>
+                    </Col>
+                </Row>
+            </Container>
         );
     }
 
     renderTextInput() {
         return (
             <div className="row">
-                <div className="col-xs-12">
+                <div className="col-md-12">
                     <p style={{marginTop: "20px"}}>
                         Paste in a JSON FHIR Resource or Bundle:
                     </p>
@@ -222,7 +211,7 @@ class OpenDialog extends React.Component {
                     />
                 </div>
                 <div
-                    className="col-xs-4 col-xs-offset-4"
+                    className="col-md-4 col-md-offset-4"
                     style={{marginBottom: "10px"}}
                 >
                     <button
@@ -241,7 +230,7 @@ class OpenDialog extends React.Component {
         return (
             <form onSubmit={this.handleLoadUrl.bind(this)}>
                 <div className="row">
-                    <div className="col-xs-12">
+                    <div className="col-md-12">
                         <p style={{marginTop: "20px"}}>
                             Enter the URL for a JSON FHIR Resource or Bundle:
                         </p>
@@ -254,7 +243,7 @@ class OpenDialog extends React.Component {
                         />
                     </div>
                     <div
-                        className="col-xs-4 col-xs-offset-4"
+                        className="col-md-4"
                         style={{marginBottom: "10px"}}
                     >
                         <button
@@ -294,9 +283,10 @@ class OpenDialog extends React.Component {
         }
 
         return (
+            <Container>
             <form onSubmit={this.handleLoadNew.bind(this)}>
-                <div className="row">
-                    <div className="col-xs-12">
+                <Row className="row">
+                    <Col md="12">
                         <p style={{marginTop: "20px"}}>Choose a FHIR Resource Type:</p>
                         <select
                             ref="fhirNew"
@@ -307,9 +297,10 @@ class OpenDialog extends React.Component {
                         >
                             {resourceOptions}
                         </select>
-                    </div>
+                    </Col>
                     {!this.props.openMode ? this.renderNewBundleOption() : undefined}
-                    <div
+                    <Col
+                        md="auto"
                         className="col-xs-4 col-xs-offset-4"
                         style={{marginTop: "10px", marginBottom: "10px"}}
                     >
@@ -319,15 +310,16 @@ class OpenDialog extends React.Component {
                         >{`\
 \t\t\t\t\tCreate Resource\
 `}</button>
-                    </div>
-                </div>
+                    </Col>
+                </Row>
             </form>
+            </Container>
         );
     }
 
     renderNewBundleOption() {
         return (
-            <div className="col-xs-12 checkbox">
+            <Col md="12" className="checkbox" style={{marginTop: "20px"}}>
                 <label>
                     <input
                         type="checkbox"
@@ -338,7 +330,7 @@ class OpenDialog extends React.Component {
 \t\t\t\t Create in a Bundle\
 `}
                 </label>
-            </div>
+            </Col>
         );
     }
 
@@ -390,7 +382,7 @@ class OpenDialog extends React.Component {
             : this.renderTabs();
 
         return (
-            <Modal show={true} onHide={this.handleClose.bind(this)} animation={false}>
+            <Modal show={true} onHide={this.handleClose.bind(this)} animation={false} size="lg">
                 <Modal.Header closeButton={true}>
                     <Modal.Title>{title}</Modal.Title>
                 </Modal.Header>

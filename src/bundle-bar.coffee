@@ -30,14 +30,14 @@ class BundleBar extends React.Component
 					style={marginRight: "10px"}
 					onClick={@handleNav.bind(@, 0)}
 				>
-					<i className="glyphicon glyphicon-step-backward" />
+					<i className="fas fa-step-backward" />
 				</button>
 
 				<button className="btn btn-default btn-sm" 
 					disabled={pos is 1} 
 					onClick={@handleNav.bind(@, @props.bundle.pos-1)}
 				>
-					<i className="glyphicon glyphicon-chevron-left" />
+					<i className="fas fa-chevron-left" />
 				</button>
 
 				<DropdownButton bsSize="small" 
@@ -55,7 +55,7 @@ class BundleBar extends React.Component
 					disabled={pos is count} 
 					onClick={@handleNav.bind(@, @props.bundle.pos+1)}
 				>
-					<i className="glyphicon glyphicon-chevron-right" />
+					<i className="fas fa-chevron-right" />
 				</button>
 
 				<button className="btn btn-default btn-sm" 
@@ -63,7 +63,7 @@ class BundleBar extends React.Component
 					onClick={@handleNav.bind(@, count-1)}
 					style={marginLeft: "10px"}
 				>
-					<i className="glyphicon glyphicon-step-forward" />
+					<i className="fas fa-step-forward" />
 				</button>
 
 			</form>

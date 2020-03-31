@@ -57,10 +57,10 @@ class ValueArrayNode extends React.Component
 				{children}
 				<div className="btn-toolbar" role="group" style={marginTop: "6px"}>					
 					<button type="button" className="btn btn-default btn-sm" onClick={@handleItemAdd.bind(@)}>
-						<span className="glyphicon glyphicon-plus"></span>
+						<span className="fas fa-plus"></span>
 					</button>
 					<button type="button" className="btn btn-default btn-sm" onClick={@props.onEditCommit}>
-						<span className="glyphicon glyphicon-ok"></span>
+						<span className="fas fa-check"></span>
 					</button>
 				</div>
 			</div>
