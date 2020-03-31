@@ -26,7 +26,7 @@ export toFhir = (decorated, validate) ->
 				if validate and child?.ui?.validationErr
 					err = child?.ui?.validationErr
 				else if validate and child.fhirType
-					err = validator.isValid(child.fhirType, child.value, true)
+					err = PrimitiveValidator(child.fhirType, child.value, true)
 				
 				if err then errCount++
 				child.value
@@ -288,7 +288,7 @@ export decorateFhirData = (profiles, data) ->
 			if dataNode instanceof Array && decorated.range?[1] == "1"
 				decorated.fhirType = null
 
-			if fhirType and error = validator.isValid(fhirType, dataNode)
+			if fhirType and error = PrimitiveValidator.isValid(fhirType, dataNode)
 				decorated.ui = {validationErr: error, status: "editing"}
 
 		return decorated
