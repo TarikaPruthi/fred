@@ -22,6 +22,11 @@ span {
   word-wrap: break-word;
 }
 
+.btn-primary {
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+
 /* all of the following are required to clip text */
 span.fhir-element-value {
   width: 100%;
@@ -194,15 +199,15 @@ span.fhir-element-value {
 .navbar-custom .navbar-text {
   color: #ffffff;
 }
-.navbar-custom .navbar-nav > li:last-child > a {
+.navbar-custom > div > .navbar-nav:last-child  > a {
   border-right: 1px solid #2a6b92;
 }
-.navbar-custom .navbar-nav > li > a {
-  color: #ffffff;
-  border-left: 1px solid #2a6b92;
+.navbar-custom .navbar-nav  > a {
+  color: #ffffff !important;
+  border-left: 1px solid #2a6b92 !important;
 }
-.navbar-custom .navbar-nav > li > a:hover,
-.navbar-custom .navbar-nav > li > a:focus {
+.navbar-custom .navbar-nav  > a:hover,
+.navbar-custom .navbar-nav  > a:focus {
   color: #c0c0c0;
   background-color: transparent;
 }

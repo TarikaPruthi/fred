@@ -25,16 +25,16 @@ class NavbarFred extends React.Component
 	
 	renderButtons: ->
 		navItems = [
-			<NavItem key="open" onClick={@handleUiChange.bind(@, "open")}>
+			<Nav.Link key="open" onClick={@handleUiChange.bind(@, "open")}>
 				Open Resource
-			</NavItem>
+			</Nav.Link>
 		]
 
-		if @props.hasResource then navItems.push <NavItem 
+		if @props.hasResource then navItems.push <Nav.Link 
 			key="resource_json" 
 			onClick={@handleUiChange.bind(@, "export")}>
 				Export JSON
-		</NavItem>
+		</Nav.Link>
 
 		return navItems
 
@@ -52,9 +52,11 @@ class NavbarFred extends React.Component
 				SMART FRED v{@props.appVersion}
 			</Navbar.Brand>
 			<Navbar.Toggle />
-			<Navbar.Collapse><Nav>
-				{@renderButtons()}
-			</Nav></Navbar.Collapse>
+			<Navbar.Collapse>
+				<Nav>
+					{@renderButtons()}
+				</Nav>
+			</Navbar.Collapse>
 		</Navbar>
 
 export default NavbarFred;
