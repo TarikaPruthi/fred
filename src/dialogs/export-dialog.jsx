@@ -4,12 +4,13 @@
  * DS102: Remove unnecessary code created because of implicit returns
  * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
  */
-const React = require("react");
-const {Modal, Nav, NavItem} = require("react-bootstrap");
 
-const State = require("../state");
-const SchemaUtils = require("../helpers/schema-utils");
-const BundleUtils = require("../helpers/bundle-utils");
+import React from 'react';
+import Modal from 'react-bootstrap/modal';
+
+import State from '../state';
+import * as SchemaUtils from '../helpers/schema-utils';
+import * as BundleUtils from '../helpers/bundle-utils';
 
 class ExportDialog extends React.Component {
     shouldComponentUpdate(nextProps) {
@@ -150,4 +151,4 @@ class ExportDialog extends React.Component {
     }
 }
 
-module.exports = ExportDialog;
+export default ExportDialog;
