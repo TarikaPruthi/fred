@@ -1,3 +1,7 @@
+/* eslint-disable react/no-string-refs */
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 /*
  * decaffeinate suggestions:
  * DS101: Remove unnecessary use of Array.from
@@ -6,12 +10,12 @@
  */
 
 import React from 'react';
-import Modal from 'react-bootstrap/modal';
+import { Modal } from 'react-bootstrap';
 
 import State from '../state';
 import * as SchemaUtils from '../helpers/schema-utils';
 import * as BundleUtils from '../helpers/bundle-utils';
-
+import { saveAs } from 'file-saver';
 class ExportDialog extends React.Component {
     shouldComponentUpdate(nextProps) {
         return nextProps.show !== this.props.show;

@@ -1,3 +1,7 @@
+/* eslint-disable no-undef */
+/* eslint-disable react/no-string-refs */
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 /*
  * decaffeinate suggestions:
  * DS101: Remove unnecessary use of Array.from

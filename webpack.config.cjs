@@ -5,13 +5,13 @@ var path = require("path");
 getPlugins = function() {
 	var optionsDev = {
 		change: [{
-			file: path.join(__dirname, '../fhirql/src/main/resources/WEB-INF/templates/index.html'),
+			file: path.join(__dirname, './public/index.html'),
 			parameters: {'bundle\.(.+)\.js': 'bundle.js'}
-		}]		
+		}]
 	}
 	var optionsBuild = {
 		change: [{
-			file: '../fhirql/src/main/resources/WEB-INF/templates/index.html',
+			file: './public/index.html',
 			parameters: {
 				'bundle(\..+)?\.js': 'bundle.js'
 			},
@@ -39,7 +39,7 @@ module.exports = {
 	entry: './src/index.coffee',
 	plugins: getPlugins(),
 	output: {
-		filename: (process.env.WEBPACK_ENV === 'build' ? '../fhirql/src/main/resources/js/bundle.js' : 'bundle.js')
+		filename: (process.env.WEBPACK_ENV === 'build' ? './public/bundle.js' : 'bundle.js')
 	},
 	mode: 'development',
 	module: {
