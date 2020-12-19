@@ -16,6 +16,8 @@ FRED is an open source web application that enables users to edit JSON [FHIR res
 - [A Bundle of Observations](http://docs.smarthealthit.org/fred/?profiles=.%2Fprofiles%2Fstu3.json&resource=.%2Fsamples%2Fstu3-bp-bundle.json)
 - [Any FHIR Resource](http://docs.smarthealthit.org/fred/?profiles=.%2Fprofiles%2Fstu3.json)
 
+#### R4 support added (Thank you! @WolfByttner)
+
 ## Planned features
 Please see [roadmap.md](roadmap.md)
 
